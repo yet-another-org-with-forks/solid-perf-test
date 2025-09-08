@@ -1,0 +1,108 @@
+import type { FileManagerEntry } from "./fm";
+
+export const testEntries: FileManagerEntry[] = [
+  {
+    name: "Documents",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 24,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: false,
+  },
+  {
+    name: "Downloads",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 12,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: false,
+  },
+  {
+    name: "Music",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 48,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: false,
+  },
+  {
+    name: "Pictures",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 72,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: false,
+  },
+  {
+    name: "Videos",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 96,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: false,
+  },
+  {
+    name: "Projects",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 120,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: false,
+  },
+  {
+    name: "Temp",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 150,
+    isDirectory: true,
+    isHidden: true,
+    isSystem: false,
+    isReadonly: false,
+  },
+  {
+    name: "System",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 200,
+    isDirectory: true,
+    isHidden: true,
+    isSystem: true,
+    isReadonly: true,
+  },
+  {
+    name: "Backups",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 250,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: true,
+  },
+  {
+    name: "Archive",
+    size: 0,
+    mtime: Date.now() - 1000 * 60 * 60 * 300,
+    isDirectory: true,
+    isHidden: false,
+    isSystem: false,
+    isReadonly: false,
+  },
+  ...Array.from({ length: 90 }, (_, i) => {
+    const id = i + 1;
+    const extensions = ["txt", "log", "jpg", "png", "mp3", "mp4", "pdf", "docx"];
+    const ext = extensions[id % extensions.length];
+    return {
+      name: `file_${id}.${ext}`,
+      size: Math.floor(Math.random() * 5_000_000),
+      mtime: Date.now() - id * 1000 * 60 * 10,
+      isDirectory: false,
+      isHidden: id % 20 === 0,
+      isSystem: id % 33 === 0,
+      isReadonly: id % 15 === 0,
+    } satisfies FileManagerEntry;
+  }),
+];

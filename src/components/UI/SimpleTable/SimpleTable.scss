@@ -1,0 +1,30 @@
+.simple-table {
+	border-collapse: collapse;
+
+	:where(tbody, thead, tfoot) > tr > &__cell {
+		padding: 5px 10px;
+		border-bottom: 1px solid #ccc;
+
+		&.th {
+			font-weight: bold;
+		}
+
+		&--align-right {
+			text-align: right;
+		}
+
+		&--align-center {
+			text-align: center;
+		}
+
+		&--align-left {
+			text-align: left;
+		}
+	}
+
+	:where(tbody) > tr {
+		&:hover {
+			background-color: whitesmoke;
+		}
+	}
+}
