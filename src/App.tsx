@@ -1,23 +1,15 @@
-import { type Component, createSignal, getOwner, type JSX, runWithOwner } from "solid-js";
+import { type Component, createSignal, Show } from "solid-js";
 import { FileManager } from "./components/FileManager";
 import { NativeFileManager } from "./components/NativeFileManager";
 
 const App: Component = () => {
-  const [renderResult, setRenderResult] = createSignal<JSX.Element>();
-
-  const owner = getOwner();
+  const [renderType, setRenderType] = createSignal<string>();
 
   const handleRender = (type: string) => {
-    runWithOwner(owner, () => {
-      console.time(`render ${type}`);
-      if (type === "components") {
-        setRenderResult(<FileManager />);
-      }
-      if (type === "native") {
-        setRenderResult(<NativeFileManager />);
-      }
-      console.timeEnd(`render ${type}`);
-    });
+    setRenderType(undefined);
+    setTimeout(() => {
+      setRenderType(type);
+    }, 0);
   };
 
   return (
@@ -29,7 +21,13 @@ const App: Component = () => {
         Show native table
       </button>
 
-      {renderResult()}
+      <Show when={renderType() === "components"}>
+        <FileManager />
+      </Show>
+
+      <Show when={renderType() === "native"}>
+        <NativeFileManager />
+      </Show>
     </>
   );
 };
