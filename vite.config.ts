@@ -1,11 +1,11 @@
-import devtools from "solid-devtools/vite";
+// import devtools from "solid-devtools/vite";
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import solidSvg from "vite-plugin-solid-svg";
 
 export default defineConfig({
   plugins: [
-    devtools(),
+    //    devtools(),
     solidPlugin(),
     solidSvg({
       defaultAsComponent: true,
